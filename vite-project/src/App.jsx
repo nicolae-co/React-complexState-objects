@@ -2,9 +2,9 @@
 import { useState } from 'react'
 import './App.css'
 
-import starEmpty from './assets/star-empty.png'
-import starFull from './assets/star-filled.png'
+
 import user from './assets/user.png'
+import Star from './components/Star'
 
 function App() {
   const [contact, setContact] = useState({
@@ -15,7 +15,7 @@ function App() {
     isFavorite: false
   })
   
-  let starIcon = contact.isFavorite ? starFull : starEmpty
+  
 
   function toggleFavorite() {
     setContact(prevState => {
@@ -31,11 +31,7 @@ function App() {
             <article className="card">
                 <img src={user} className="card--image" />
                 <div className="card--info">
-                    <img 
-                        src={starIcon} 
-                        className="card--favorite"
-                        onClick={toggleFavorite}
-                    />
+                    <Star isFilled={contact.isFavorite} handleClick={toggleFavorite}/>
                     <h2 className="card--name">
                         {contact.firstName} {contact.lastName}
                     </h2>
